@@ -7,15 +7,25 @@ output: html_document
 
 #Recogidas de la OSL Por mes 
 
-```{r}
+```{r, echo=FALSE}
 library(ggplot2)
-recogidas <- read.csv('recogidas-mes.csv')
+recogidas <- read.csv('recogidas-año-mes.csv')
 ```
 
-You can also embed plots, for example:
+Recogidas acumuladas a lo largo de los años. Una "recogida" corresponde a un grupo homogéneo de material informático, y en principio no tiene correlación con la cantidad ni el peso del material: puede ser un teclado, o puede ser veinte ordenadores completos. 
 
 ```{r, echo=FALSE}
-plot(cars)
+ggplot()+geom_line(data=recogidas, aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+En este gráfico se muestra el acumulado por año, con fin de comparar lo recogido cada año con el anterior.
+
+```{r, echo=FALSE}
+ggplot()+geom_line(data=subset(recogidas,Año==2012), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2013), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2014), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2015), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))
+
+```
+
+Como se observa, el incremento de recogidas de un año al siguiente es considerable, hasta el punto que a mitad de este año se superaron las recogidas del año pasado. También se observan los picos de recogidas que corresponden generalmente con los principios de los cuatrimestres, cuando se llevan a cabo las recogidas del material que se sustituye, de prácticas sobre todo. También, como se ve, las recogidas alcanzan varias decenas cada semana. Teniendcoo en cuenta la unidad de cuenta que se usa, este incrementeo anual refleja la mayor concienciación de la UGR con las recogidas llevadas a cabo por la OSL, que hace que haya cada vez más peticiones y esas peticiones se lleven a cabo durante todo el año. También el estancamiento durante los años 2013 y 14 se pueden achacar más a la crisis, que impedía que se renovaran los equipos.
+En todo caso, queda clara la influencia positiva de las recogidas de la OSL en la concienciación de la UGR con el reciclaje y reutilización de ordenadores, que se prevé también que vaya en aumento en los próximos meses.
+
+Todos los datos de este informe están también disponibles, como este mismo informe, en [el repositorio de la OSL](http://github.com/oslugr/recogidas). Las solicitudes de recogida están disponibles públicamente, así como las entregas y donaciones.
