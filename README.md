@@ -1,7 +1,3 @@
----
-layout: index
----
-
 # Recogidas de material informático en la UGR
 
 
