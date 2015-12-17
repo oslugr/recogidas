@@ -1,7 +1,7 @@
 ---
-title: "Recogidas OSL"
+title: "Recogidas OSL para la Unidad de Calidad"
 author: "J. J. Merelo"
-date: "14/12/2015"
+date: "17/12/2015"
 output: html_document
 ---
 
@@ -15,17 +15,22 @@ recogidas <- read.csv('recogidas-año-mes.csv')
 Recogidas acumuladas a lo largo de los años. Una "recogida" corresponde a un grupo homogéneo de material informático, y en principio no tiene correlación con la cantidad ni el peso del material: puede ser un teclado, o puede ser veinte ordenadores completos. 
 
 ```{r, echo=FALSE}
-ggplot()+geom_line(data=recogidas, aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))
+ggplot()+geom_line(data=recogidas, aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+ scale_x_continuous(breaks=1:12)
 ```
 
 En este gráfico se muestra el acumulado por año, con fin de comparar lo recogido cada año con el anterior.
 
 ```{r, echo=FALSE}
-ggplot()+geom_line(data=subset(recogidas,Año==2012), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2013), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2014), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2015), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))
+ggplot()+geom_line(data=subset(recogidas,Año==2012), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2013), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2014), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+geom_line(data=subset(recogidas,Año==2015), aes(x=Mes,y=cumsum(Recogidas),color=Año,group=Año))+ scale_x_continuous(breaks=1:12)
 
 ```
 
 Como se observa, el incremento de recogidas de un año al siguiente es considerable, hasta el punto que a mitad de este año se superaron las recogidas del año pasado. También se observan los picos de recogidas que corresponden generalmente con los principios de los cuatrimestres, cuando se llevan a cabo las recogidas del material que se sustituye, de prácticas sobre todo. También, como se ve, las recogidas alcanzan varias decenas cada semana. Teniendcoo en cuenta la unidad de cuenta que se usa, este incrementeo anual refleja la mayor concienciación de la UGR con las recogidas llevadas a cabo por la OSL, que hace que haya cada vez más peticiones y esas peticiones se lleven a cabo durante todo el año. También el estancamiento durante los años 2013 y 14 se pueden achacar más a la crisis, que impedía que se renovaran los equipos.
 En todo caso, queda clara la influencia positiva de las recogidas de la OSL en la concienciación de la UGR con el reciclaje y reutilización de ordenadores, que se prevé también que vaya en aumento en los próximos meses.
+
+De hecho, se observan también unos claros patrones temporales en las recogidas.
+```{r, echo=FALSE}
+ggplot()+geom_bar(data=recogidas, aes(x=Mes,y=Recogidas,fill=Año),stat='identity', position='stack')+ scale_x_continuous(breaks=1:12)
+```
 
 Todos los datos de este informe están también disponibles, como este mismo informe, en [el repositorio de la OSL](http://github.com/oslugr/recogidas). Las solicitudes de recogida están disponibles públicamente, así como las entregas y donaciones.
