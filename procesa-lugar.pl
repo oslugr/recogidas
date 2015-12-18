@@ -24,15 +24,21 @@ my $mons =  { 'Jan' => 1,
 	      'Nov' => 11,
 	      'Dec' => 12 };
 
-my $patterns =  { "(fac|esc|ets|e.t.s.|e t s)" => "Facultad o Escuela",
+my $patterns =  { "(facu|escu|ets|e\.t\.s\.|e t s|f.psi|ffcc|trad|farmacia)" => "Facultad o Escuela",
 		  "(centro|inst|csirc)"  => "Centro o Instituto",
-		  "(biblio)" => "Biblioteca",
+		  "(biblio|bilio)" => "Biblioteca",
 		  "(fund)" =>"Fundación"  };
+
+my $sub_patterns = { "de ciencias\$" => "Ciencias",
+		     "(etsiit|inform)" => "Informática",
+		     "educa" => "Ciencias de la Educación",
+		     "sociolog" => "Políticas y Sociologia"};
 
 my %recogidas;
 say "Año,Lugar,Recogidas";
 for my $r (@recogidas) {
-  my ($t,$lugar) = split(",", $r);
+  my ($sin_comillas) = ($r =~ /\"(.*)\"/);
+  my ($t,$lugar) = split(",", $sin_comillas);
   my ($year ) = ($t =~ /\w{3}\s+\d+\s+(\d{4})/ );
   if ( !$year ) {
     die "bad $t";
@@ -53,9 +59,16 @@ sub normaliza {
 
   my $res = "Servicios centrales";
   for my $p (keys %$patterns) {
-    if ($sub =~ /$p/ ) {
+    if ($sub =~ qr/$p/ ) {
       $res = $patterns->{$p};
     }
   }
+
+  for my $p (keys %$sub_patterns) {
+    if ($sub =~ qr/$p/ ) {
+      $res = $sub_patterns->{$p};
+    }
+  }
+#  say "$res=> $sub";
   return $res;
 }

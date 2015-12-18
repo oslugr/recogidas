@@ -19,3 +19,7 @@ El gráfico siguiente muestra las recogidas acumuladas a lo largo de los años. 
 ```{r, echo=FALSE}
 ggplot(data=recogidas, aes(x=Año,y=Recogidas,color=Lugar,group=Lugar))+geom_line()+geom_point()
 ```
+
+Las Escuelas y Facultades con más recogidas se han separado, aunque en algunos casos (Políticas y Sociología) sólo tienen recogidas en dos años, el 2013 y 2015. En general, como se ve, la mayoría de los apartados permanecen más o menos constantes o varían relativamente poco a lo largo de los años, mientras que los Servicios Centrales son los que aumentan regularmente, hasta el punto de tener más de 100 recogidas este año. 
+
+Todos los datos de este informe están también disponibles, como este mismo informe, en [el repositorio de la OSL](http://github.com/oslugr/recogidas). Las solicitudes de recogida están disponibles públicamente, así como las entregas y donaciones.
