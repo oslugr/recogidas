@@ -1,9 +1,9 @@
 ---
-title: "Recogidas OSL para la Unidad de Calidad: Reparto por tipo de centro"
+title: 'Recogidas OSL para la Unidad de Calidad: Reparto por tipo de centro'
 author: J. J. Merelo, Nuria Rico Castro, Manuel Cogolludo Vallejo, Renato Luis Ramírez
   Rivero, José Alonso Arias
 date: "18/12/2015"
-output: html_document
+output: pdf_document
 ---
 
 #Recogidas de la OSL para la Unidad de Calidad: origen 
