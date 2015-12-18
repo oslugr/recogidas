@@ -18,7 +18,8 @@ my $mons =  { 'Jan' => 1,
 	      'Sep' => 9,
 	      'Oct' => 10,
 	      'Nov' => 11,
-	      'Dec' => 12 };
+	      'Dec' => 12,
+	      'Dic' => 12};
 
 my $file = shift || "recogidas.dat";
 
@@ -30,10 +31,8 @@ my %recogidas;
 say "Año,Mes,Recogidas";
 for my $t (@times) {
     my ($mon, $year ) = ($t =~ /(\w{3})\s+\d+\s+(\d{4})/ );
-    say $t;
     if ( $mon && $year ) {
       my $month = sprintf( "%02d", $mons->{$mon} );
-      say "$year,$month";
       $recogidas{"$year,$month"}++;
     } else {
       die "bad $t";

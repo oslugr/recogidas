@@ -1,9 +1,14 @@
 ---
-title: "Recogidas OSL para la Unidad de Calidad"
-author: "J. J. Merelo"
+title: "Recogidas de OSL para la Unidad de Calidad"
+author: J. J. Merelo, Nuria Rico Castro, Manuel Cogolludo Vallejo, Renato Luis Ramírez
+  Rivero, José Alonso Arias
 date: "17/12/2015"
-output: html_document
+output: pdf_document
 ---
+
+#Introducción
+
+Desde principios de 2012 y a partir de un acuerdo con la Unidad de Calidad, la [Oficina de Software Libre](http://osl.ugr.es) de la universidad de Granada viene recogiendo el material informático de la universidad. Este informe refleja numéricamente los datos de tales recogidas.
 
 #Recogidas de la OSL Por mes 
 
@@ -32,5 +37,7 @@ De hecho, se observan también unos claros patrones temporales en las recogidas.
 ```{r, echo=FALSE}
 ggplot()+geom_bar(data=recogidas, aes(x=Mes,y=Recogidas,fill=Año),stat='identity', position='stack')+ scale_x_continuous(breaks=1:12)
 ```
+
+Los primeros meses de cada cuatrimestre son en los que las recogidas son mucho maś intensas, aunque se notan muchas más peticiones a principios del segundo cuatrimestre. Estas disminuciones en el ritmo de recogidas se usan para intensificar las campañas de concienciación y también las campañas de donación que se llevan a cabo periódicamente.
 
 Todos los datos de este informe están también disponibles, como este mismo informe, en [el repositorio de la OSL](http://github.com/oslugr/recogidas). Las solicitudes de recogida están disponibles públicamente, así como las entregas y donaciones.
