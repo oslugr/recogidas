@@ -1,1 +1,1 @@
-requires "Time::Piece";
+requires "JSON";
