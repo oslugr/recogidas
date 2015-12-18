@@ -30,14 +30,11 @@ my $patterns =  { "(fac|esc|ets|e.t.s.|e t s)" => "Facultad o Escuela",
 		  "(fund)" =>"Fundación"  };
 
 my %recogidas;
-say "Año,Mes,Recogidas,Lugar";
+say "Año,Lugar,Recogidas";
 for my $r (@recogidas) {
   my ($t,$lugar) = split(",", $r);
-  my ($mon, $year ) = ($t =~ /(\w{3})\s+\d+\s+(\d{4})/ );
-  my $month;
-  if ( $mon && $year ) {
-    $month = sprintf( "%02d", $mons->{$mon} );
-  } else {
+  my ($year ) = ($t =~ /\w{3}\s+\d+\s+(\d{4})/ );
+  if ( !$year ) {
     die "bad $t";
   }
   $recogidas{"$year"}{normaliza($lugar)}++;

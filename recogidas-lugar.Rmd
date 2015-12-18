@@ -1,0 +1,21 @@
+---
+title: "Recogidas OSL para la Unidad de Calidad: Reparto por tipo de centro"
+author: J. J. Merelo, Nuria Rico Castro, Manuel Cogolludo Vallejo, Renato Luis Ramírez
+  Rivero, José Alonso Arias
+date: "18/12/2015"
+output: html_document
+---
+
+#Recogidas de la OSL para la Unidad de Calidad: origen 
+
+```{r, echo=FALSE}
+library(ggplot2)
+recogidas <- read.csv('recogidas-lugar.csv')
+```
+
+El gráfico siguiente muestra las recogidas acumuladas a lo largo de los años. Una "recogida" corresponde a un grupo homogéneo de material informático. Como el campo de lugar de recogida no está normalizado, se han buscado palabras comunes como "Facultad", "Escuela" o "Centro" para asignar las recogidas en cuatro categorías. Las que no están en ninguna otra categoría se asignan a servicios centrales. 
+
+
+```{r, echo=FALSE}
+ggplot(data=recogidas, aes(x=Año,y=Recogidas,color=Lugar,group=Lugar))+geom_line()+geom_point()
+```
