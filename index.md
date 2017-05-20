@@ -25,3 +25,10 @@ para generar un fichero CSV que puedas trazar. Un informe a fecha
 diciembre de 2015 se ha
 [publicado en RPubs](http://rpubs.com/jjmerelo/recogidas-ugr).
 
+Antes tendrás que instalar los módulos de Perl necesarios con
+
+    cpanm --installdeps .
+	
+`cpanm` debería estar instalado en el sistema (si usas Perlbrew, que
+deberías, estará ya); si
+no, [aquí está la explicación e instrucciones de instalación](http://search.cpan.org/~miyagawa/App-cpanminus-1.7043/lib/App/cpanminus.pm) 
