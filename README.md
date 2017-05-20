@@ -10,6 +10,10 @@ Los datos de recogidas son públicos. Para descargártelos y guardarlos
 en un fichero, ejecuta
 
 	./descarga.sh
+	
+Este script usa dos utilidades: `curl` (que debería estar instalado en
+todos los sistemas Linux, si no, [descargarlo](https://curl.haxx.se/)) y [`jq`](https://stedolan.github.io/jq/), una excelente
+utilidad de procesamiento de ficheros json. 
 
 Eso genera un fichero .csv, que puedes procesar como quieras. Un
 ejemplo está en `recogidas.dat`. Ese fichero devuelve sólo las fechas
